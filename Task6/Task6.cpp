@@ -31,6 +31,7 @@ public:
     vector<string> numofappartament;
     
     AdressBook(){}
+    ~AdressBook(){}
     
    
     
@@ -56,15 +57,27 @@ public:
    ////////////////////////////////////////
     void get(string nm)
     {
+        int j=0;
         for(int i=0; i<name.size(); i++)
         {
             if (name[i]==nm)
             {
-                cout<<name[i]<<" "<<street[i]<<" дом: "<<numhouse[i]<<" квартира: "<<numofappartament[i];
+                j=i;
+                //cout<<name[i]<<" "<<street[i]<<" дом: "<<numhouse[i]<<" квартира: "<<numofappartament[i];
             }
-           
-
         }
+        
+        if(j==0)
+        {
+            cout<<"Такой записи нет" << endl;
+        }
+        else
+        {
+            cout<<name[j]<<" улица "<<street[j]<<" дом: "<<numhouse[j]<<" квартира: "<<numofappartament[j]<<endl;
+        }
+        
+
+        
     
     }
     ///////////////////////////////////////
@@ -182,14 +195,8 @@ int main()
     AdressBook ab;
     ab.load();
     ab.add("Alexandr", "Murinskiy", "23", "45");
-    ab.change("Miron", "Minskaya", "34", "23");
     ab.change("Miron", "Orbely", "23", "33");
     ab.save();
+    ab.get("Alexand");
   
 }
-/*{
-    AdressBook ab;
-    
-    
-    
-}*/
